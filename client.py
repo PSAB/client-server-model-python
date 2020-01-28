@@ -44,13 +44,17 @@ class Rectangle():
 
 
 
-def redraw_window():
+def redraw_window(window, rectangle):
     window.fill((255, 255, 255))  # Picks window color white
+    rectangle.draw(window)
+
     pygame.display.update() # Update contents of display to the screen
 
 
 def main():
     run = True
+    r = Rectangle(50, 50, 100, 100, (0, 255, 0))  # Create rectangle object
+
 
     while run:
        # Game Event handling
@@ -60,4 +64,8 @@ def main():
                 run = False
                 pygame.quit()
 
-        redraw_window() # Keep updating the screen 24/7 unless game quits
+        r.move()  # Move Rectangle based on key being pressed
+        redraw_window(window, r) # Keep updating the screen 24/7 unless game quits
+
+
+main()
