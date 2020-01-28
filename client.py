@@ -29,19 +29,24 @@ class Rectangle():
         # Left Arrow key:
         if keys[pygame.K_LEFT]:
             self.x -= self.speed
+            print((self.x, self.y))
 
         # Right Arrow key:
         if keys[pygame.K_RIGHT]:
             self.x += self.speed
+            print((self.x, self.y))
 
         # Up key
         if keys[pygame.K_UP]:
-            self.y += self.speed
+            self.y -= self.speed
+            print((self.x, self.y))
 
         # Down key:
         if keys[pygame.K_DOWN]:
-            self.y -= self.speed
+            self.y += self.speed
+            print((self.x, self.y))
 
+        self.rect = (self.x, self.y, self.width, self.height)
 
 
 def redraw_window(window, rectangle):
