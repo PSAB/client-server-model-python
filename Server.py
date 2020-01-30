@@ -17,19 +17,28 @@ s.listen() # Expecting websocket connections
 
 print('waiting for connection, server started')
 
+# Start a secondary thread to run in the background to process connections while the while loop below still simultaneously
+# continues to search for new connections
 def threaded_client(connection):
+    # When we connect to a client:
     reply = ""
     while True:
         try:
             data = connection.recv(2048) # Bit size to send and receive over websocket
             reply = data.decode('utf-8') # decode the transmitted bits of information
 
-            if not data:
+            if not data: # If client leaves or something
                 print('Disconnected')
                 break
+            else:
+                print('Received:', reply)
+                print('Sending:', reply)
+
+            # This line distributes the updated shape information to all connected clients
+            connection.sendall(str.encode(reply)) # Send encoded bits of string message (have to decode too)
 
         except:
-            pass
+            break
 
 
 while True:
@@ -38,4 +47,4 @@ while True:
     print('Connected to address: ', str(address))
 
     # Begin the threaded_client function in a second background thread while this while loop is still running
-    start_new_thread(threaded_client, (connection, ))
+    start_new_thread(threaded_client, (connection, )) # Built-in method of thread module!!

@@ -16,7 +16,7 @@ class Rectangle():
         self.width = width
         self.height = height
         self.color = color
-        self.rect = (x, y, width, height)
+        self.rect = (x, y, width, height) # For ease of drawing
         self.speed = 3
 
     def draw(self, window):
