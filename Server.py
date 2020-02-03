@@ -2,7 +2,7 @@ import socket
 from  _thread import *
 import sys
 
-server = "" # IP Address here
+server = "172.20.10.4" # Local IP Address here
 port = 5555 # Safe port to use
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -40,6 +40,8 @@ def threaded_client(connection):
         except:
             break
 
+    print("Lost connection, closing...")
+    connection.close()
 
 while True:
     # Accept any incoming connections, store in connection object and store ip as well

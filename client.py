@@ -66,6 +66,7 @@ def main():
         for event in pygame.event.get():
             # Quitting mechanism triggers if the user click the window close button:
             if event.type == pygame.QUIT:
+                print("Game has quit")
                 run = False
                 pygame.quit()
 
