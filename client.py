@@ -1,4 +1,6 @@
 import pygame
+from Network import Network
+# from ast import literal_eval
 
 width = 500
 height = 500
@@ -48,6 +50,12 @@ class Rectangle():
 
         self.rect = (self.x, self.y, self.width, self.height)
 
+def read_position(str_):
+    str_  = str_.split(',')
+    return int(str_[0]), int(str_[1])
+
+def make_position(tuple_):
+    return str(tuple_[0]) + ',' + str(tuple_[1])
 
 def redraw_window(window, rectangle):
     window.fill((255, 255, 255))  # Picks window color white
@@ -58,7 +66,12 @@ def redraw_window(window, rectangle):
 
 def main():
     run = True
-    r = Rectangle(50, 50, 100, 100, (0, 255, 0))  # Create rectangle object
+    n = Network()
+    startPosition = read_position(n.getPosition()) # Starting position will arrive as tuple looking like: "(31, 74)"
+    r = Rectangle(startPosition[0], startPosition[1], 100, 100, (0, 255, 0))  # Create rectangle object
+    r2 = Rectangle(startPosition[0], startPosition[1], 100, 100, (0, 255, 0)) # Second rectangle object
+    clock = pygame.time.Clock()
+
 
 
     while run:

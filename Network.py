@@ -7,8 +7,10 @@ class Network():
         self.port = 5555
         self.address = (self.server, self.port)
         # self.connect()
-        self.id = self.connect()
-        print(self.id)
+        self.position = self.connect()
+
+    def getPosition(self):
+        return self.position
 
     def connect(self):
         try:
@@ -26,6 +28,3 @@ class Network():
         except socket.error as e:
             print(e)
 
-n = Network()
-print(n.send("hello"))
-print(n.send("working"))
