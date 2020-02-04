@@ -2,7 +2,7 @@ import socket
 from  _thread import *
 import sys
 
-server = "172.20.10.4" # Local IP Address here
+server = "10.143.54.151" # Local IP Address here
 port = 5555 # Safe port to use
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -21,6 +21,7 @@ print('waiting for connection, server started')
 # continues to search for new connections
 def threaded_client(connection):
     # When we connect to a client:
+    connection.send(str.encode("Connected")) # Send token to verify connection established
     reply = ""
     while True:
         try:
