@@ -2,7 +2,7 @@ import socket
 from  _thread import *
 import sys
 
-server = "10.143.54.151" # Local IP Address here
+server = "192.168.0.27" # Local IP Address here
 port = 5555 # Safe port to use
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
