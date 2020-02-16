@@ -82,7 +82,7 @@ def main():
 
         clock.tick(60)
 
-        r2Position = read_position(n.send(make_position(r.x, r.y))) # Send the position of r and retrieve it
+        r2Position = read_position(n.send(make_position((r.x, r.y)))) # Send the position of r and retrieve it
         r2.x = r2Position[0]
         r2.y = r2Position[1]
         r2.update()
